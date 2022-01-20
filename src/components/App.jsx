@@ -11,12 +11,13 @@ class App extends React.Component {
       currentVideo: exampleVideoData[0],
       videoList: exampleVideoData
     };
+    this.onListItemClick = this.onListItemClick.bind(this);
   }
 
   // When a video in the videoList is clicked, set the currentVideo to the video that was clicked
-  onListItemClick() {
+  onListItemClick(video) {
     this.setState({
-      currentVideo: this.video});
+      currentVideo: video});
   }
 
   render() {
@@ -32,7 +33,7 @@ class App extends React.Component {
             <div id="videoPlayer"><h5><VideoPlayer video={this.state.currentVideo}/></h5></div>
           </div>
           <div className="col-md-5">
-            <div id="videoList"><h5><VideoList videos={this.state.videoList}/></h5></div>
+            <div id="videoList"><h5><VideoList videos={this.state.videoList} onListItemClick={this.onListItemClick}/></h5></div>
           </div>
         </div>
       </div>
